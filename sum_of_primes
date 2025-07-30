@@ -1,0 +1,10 @@
+def sum_primes(n):
+    n=abs(n)
+    Sum=0
+    while(n>0):
+        rem=n%10
+        if(rem in (2,3,5,7)):
+            Sum+=rem
+        n=n//10
+num=int(input())
+print(sum_primes(num))
