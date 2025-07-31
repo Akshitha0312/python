@@ -1,0 +1,20 @@
+def generate(ind,current,ans,arr):
+    if(ind==len(arr)):   # if ind is out of arr ,store the current subset and return(backtrack to the previous subset) 
+        ans.append(current.copy())  # if we wont take copy of current then it reflects on ans too...so store the copy of current in ans
+        return
+    current.append(arr[ind])
+    generate(ind+1,current,ans,arr)
+    current.pop()
+    generate(ind+1,current,ans,arr)
+def subsets(arr):
+    ind=0
+    current=[]
+    ans=[]
+    generate(ind,current,ans,arr)
+    return ans
+arr=[1,2,3]
+print(subsets(arr))
+
+
+
+o/p: [[1, 2, 3], [1, 2], [1, 3], [1], [2, 3], [2], [3], []]
