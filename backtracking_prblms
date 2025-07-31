@@ -56,3 +56,32 @@ class Solution:
 #candidates=[2,3,6,7]
 #target=7
 #print(obj.combinationSum(candidates,target)
+
+-------------------------------------------------------------------------------------------
+
+# generate paranthesis which are valid
+
+
+def generate(curr_str,ans,Open,Close,n):
+    if(Open==Close and Open+Close==2*n):
+        ans.append(curr_str)
+        return
+    if(Open>n):
+        return
+    if(Close>Open):
+        return
+    generate(curr_str+"(",ans,Open+1,Close,n)
+    generate(curr_str+")",ans,Open,Close+1,n)
+def generateParanthesis(n):
+    curr_str=""
+    Open=0
+    Close=0
+    ans=[]
+    generate(curr_str,ans,Open,Close,n)
+    return ans
+n=int(input())
+print(generateParanthesis(n))
+
+
+n=3
+o/p: ['((()))', '(()())', '(())()', '()(())', '()()()']
