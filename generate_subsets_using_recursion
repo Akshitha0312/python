@@ -1,3 +1,7 @@
+***********backtracking problems********************
+
+# generate subset using recursion
+
 def generate(ind,current,ans,arr):
     if(ind==len(arr)):   # if ind is out of arr ,store the current subset and return(backtrack to the previous subset) 
         ans.append(current.copy())  # if we wont take copy of current then it reflects on ans too...so store the copy of current in ans
