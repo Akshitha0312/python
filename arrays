@@ -47,6 +47,7 @@ class Solution:
 obj=Solution()
 arr=[1,2,0,4]
 print(obj.productExceptSelf(arr))
-        
+
+o/p:[0, 0, 8, 0]
         
         
