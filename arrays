@@ -1,0 +1,21 @@
+# product of subarray except itself  without using division operator
+#bsrute force method
+
+arr=[1,2,3,4]
+n=len(arr)
+res=[]
+for i in range(0,n):
+    product=1
+    for j in range(0,n):
+        if(i!=j):
+            product=product*arr[j]
+    res.append(product)
+print(res)    
+
+o/p:[24, 12, 8, 6]
+
+
+#time complexity(O(n^2))
+
+to reduce time complexity we need to optimize the code
+
