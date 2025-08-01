@@ -18,4 +18,35 @@ o/p:[24, 12, 8, 6]
 #time complexity(O(n^2))
 
 to reduce time complexity we need to optimize the code
+#using "/"
 
+
+class Solution:
+    def productExceptSelf(self, nums):
+        n = len(nums) 
+        no_of_zeros = 0 
+        prod = 1 
+        for i in nums:
+            if(i==0):
+                no_of_zeros+=1 
+            else:
+                prod*=i 
+        ans = [] 
+        for i in nums:
+            if(no_of_zeros>1):
+                ans.append(0)
+            else:
+                if(no_of_zeros==1):
+                    if(i==0):
+                        ans.append(prod)
+                    else:
+                        ans.append(0)
+                else:
+                    ans.append(prod//i)
+        return ans 
+obj=Solution()
+arr=[1,2,0,4]
+print(obj.productExceptSelf(arr))
+        
+        
+        
