@@ -1,0 +1,120 @@
+*********** check ith (or) kth bit************
+# checking the bit is setbit or not
+# setbit=1    non-setbit=0
+# if there is a setbit we need return true
+
+def checkBit(n,k):
+    if((n&(1<<k))==0):             
+        return False
+    return True
+#input
+n=13
+k=2
+print(checkBit(n,k))
+
+# here we using leftshift
+# 13:-1101 (binary)
+# 1:-0001
+# 1<<k:- 0100  (k=2)
+# perform Bitwise and(&) operation with n which is given in if condition
+# 1101 
+# 0100  (&)
+-------
+# 0100   (if both are true(1) the result is true ,otherwise false)
+# here we got 0100 , after performing and(&) operation..we get non-zero val so it means there is a setbit..so it returns true
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+*****using rightshift operator*****
+
+def checkkthBit(n,k):
+    n=(n>>k)
+    if((n&1)==0):
+        return False
+    return True
+
+#input
+n=13
+k=2
+print(checkkthBit(n,k))
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+***************************Set kth bit************************
+# make non-setbit to setbit (0-->1)
+
+def setKthBit(n,k):
+    n=n|(1<<k)
+    return n
+n=10
+k=2
+print(setKthBit(n,k))
+
+o/p: 14
+
+#here we are using Bitwise or(|) and leftshift operator
+# 1<<k  ------>0100   (k=2)
+# n|(1<<k)---->1010
+               0100   (|)
+              --------
+               1110 ---> (14)
+-------------------------------------------------------------------------------------------------------------------------
+
+************** Clear ith/kth bit *****************
+# make the setbit to non setbit (1-->0)
+
+def clearKthBit(n,k):
+    n=n&(~(1<<k))
+    return n
+n=13
+k=2
+print(clearKthBit(n,k))
+
+o/p:- 9
+
+# 13----->1101
+# 1<<k--->0100 and we need to use negation/not operator to this...(0-->1 and 1-->0)
+#~(1<<k)--->1011
+
+# 13------->1101
+# ~(1<<k)-->1011    (&)
+           ------
+            1001 --->(9)
+-------------------------------------------------------------------------------------------------------------------
+
+****************************toggle ith bit************************
+
+# convert particular bit in num (1->0 or 0->1) by taking position num 'k'
+# here we are using XOR operation   (if no.of one's are even then the result is 0,if no.of ones are odd then the res is 1)
+
+def toggleKthBit(n,k):
+    n=n^(1<<k)
+    return n
+n=13
+k=2
+print(toggleKthBit(n,k))
+
+# 13---->1101
+# k=2 means 2nd position from last (ind=0 at last)
+#here we need to change the bit 1 to 0 which is present in 2nd position
+# 13---->1101
+# 1<<k-->0100  (^)
+        ------
+         1001 -->(9)
+
+---------------------------------------------------------------------------------------------------------------------------
+
+*********************** Remove rightmost setbit *******************************
+# the rightmost setbit(1) should be converted into 0 in n-1
+# in n-1, the nextvalues of setbit(where we changed 1->0) were flipped
+def removeRightmostBit(n):
+    n=n&(n-1)
+    return n
+n=40
+print(removeRightmostBit(n))
+
+# n=40--->101000
+# n=39--->100111  (n-1) the nums were flipped after setbit
+          -------
+          100000  (performing bitwise and(&))
+        # observe that the rightmost setbit in 40 is changed after performing and operation(1-->0)
