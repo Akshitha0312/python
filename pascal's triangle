@@ -1,0 +1,61 @@
+# to print pascal's triangle
+# we use formula  ans*((row-col)/col)
+
+class Solution:
+    def generateRows(self,row):
+        ans=1
+        res=[ans]
+        for col in range(1,row):
+            ans=ans*(row-col)
+            ans=ans//col
+            res.append(ans)
+        return res
+    def generate(self, numRows: int) -> List[List[int]]:
+        finalRes=[]
+        for row in range(1,numRows+1):
+            finalRes.append(self.generateRows(row))
+        return finalRes
+        
+#input to run in online compiler
+#numRows=int(input())
+#ob=Solution()
+#print(ob.generate(numRows))
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+#pascal's triangle 2
+#to print the elements in particular row
+
+class Solution:
+    def getRow(self, rowIndex: int) -> List[int]:
+        ans=1
+        res=[ans]
+        for col in range(1,rowIndex+1):
+            ans=ans*(rowIndex-col+1)
+            ans=ans//col
+            res.append(ans)
+        return res
+
+
+#input
+#rowIndex=int(input())
+#ob=Solution()
+#print(ob.getRow(rowIndex))
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+#to print particular element when they give rowInd and colInd
+
+def generate(R,C):
+    n=R-1
+    r=C-1
+    ans=1
+    for i in range(r):  # instead of using (r-1)! in ncr ..we need to multiply the num r times by decreasing the num
+        ans=ans*(n-i)
+        ans=ans//(i+1)
+    return ans
+    
+# input
+#R=int(input())
+#C=int(input())
+#print(generate(R,C))
